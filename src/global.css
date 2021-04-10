@@ -1,0 +1,63 @@
+html, body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  /* margin-top: 30px; */
+}
+
+#app {
+  display: flex;
+  align-items: flex-start;
+}
+
+.vs-sidebar-content {
+  position: relative;
+}
+
+.content {
+  padding: 10px 40px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.table-actions {
+  display: flex;
+}
+
+.form {
+  padding: 20px;
+}
+
+.field {
+  margin-top: 30px;
+}
+
+.vs-sidebar__item__text, .vs-sidebar__item__text a {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.vs-notification__content__header {
+  padding-bottom: 0;
+}
+
+.vs-table__tbody {
+  position: relative;
+}
+
+#tableContent {
+  position: relative;
+}
+
+
+#tableContent .vs-loading {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vs-input-content {
+  width: 200px;
+}

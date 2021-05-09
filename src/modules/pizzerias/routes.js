@@ -10,6 +10,10 @@ export default [
       module: "Pizzerias",
       action: 'list',
       title: "Пиццерии",
+      roles: [
+        'ROLE_ADMIN',
+        'ROLE_MANAGER'
+      ]
     },
   },
   {
@@ -20,6 +24,10 @@ export default [
       module: "Pizzerias",
       action: "edit",
       title: "Редактирование пиццерии",
+      roles: [
+        'ROLE_ADMIN',
+        'ROLE_MANAGER'
+      ]
     },
   },
   {
@@ -30,6 +38,10 @@ export default [
       module: "Pizzerias",
       action: "create",
       title: "Создание пиццерии",
+      roles: [
+        'ROLE_ADMIN',
+        'ROLE_MANAGER'
+      ]
     },
   },
   {
@@ -40,6 +52,10 @@ export default [
       module: "Pizzerias",
       action: "read",
       title: "Пиццерия",
+      roles: [
+        'ROLE_ADMIN',
+        'ROLE_MANAGER'
+      ]
     },
   },
 ];

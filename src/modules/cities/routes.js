@@ -10,6 +10,9 @@ export default [
       module: "Cities",
       action: 'list',
       title: "Города",
+      roles: [
+        'ROLE_ADMIN'
+      ]
     },
   },
   {
@@ -20,6 +23,9 @@ export default [
       module: "Cities",
       action: "edit",
       title: "Редактирование города",
+      roles: [
+        'ROLE_ADMIN'
+      ]
     },
   },
   {
@@ -30,6 +36,9 @@ export default [
       action: "create",
       title: "Создание города",
       module: "Cities",
+      roles: [
+        'ROLE_ADMIN'
+      ]
     },
   },
   {
@@ -40,6 +49,9 @@ export default [
       action: "read",
       title: "Пользователь",
       module: "User",
+      roles: [
+        'ROLE_ADMIN'
+      ]
     },
   },
 ];

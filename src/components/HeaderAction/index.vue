@@ -2,14 +2,14 @@
   <div class="header-action">
     <h2>{{ title }}</h2>
     <div class="actions">
-      <vs-button v-if="isList" circle gradient active @click="goToCreate"> Добавить </vs-button>
-      <vs-button v-if="isCreate" success border @click="create">
+      <vs-button v-if="isList && create" circle gradient active @click="goToCreate"> Добавить </vs-button>
+      <vs-button v-if="isCreate && create" success border @click="createAction">
         Создать
       </vs-button>
-      <vs-button v-if="isEdit" border @click="edit">
+      <vs-button v-if="isEdit && edit" border @click="editAction">
         Изменить
       </vs-button>
-      <vs-button v-if="isEdit || isShow" danger border @click="remove">
+      <vs-button v-if="(isEdit || isShow) && remove" danger border @click="removeAction">
         Удалить
       </vs-button>
     </div>
@@ -18,6 +18,20 @@
 
 <script>
 export default {
+  props: {
+    create: {
+      type: Boolean,
+      default: true
+    },
+    edit: {
+      type: Boolean,
+      default: true
+    },
+    remove: {
+      type: Boolean,
+      default: true
+    }
+  },
   computed: {
     title: function () {
       return this.$route.meta.title;
@@ -41,13 +55,13 @@ export default {
         name: `${this.$route.meta.module}.create`,
       });
     },
-    create() {
+    createAction() {
       this.$emit("createAction");
     },
-    edit() {
+    editAction() {
       this.$emit("editAction");
     },
-    remove() {
+    removeAction() {
       this.$emit("removeAction");
     },
   },

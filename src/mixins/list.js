@@ -1,6 +1,8 @@
 import request from "@/utils/request";
+import PermissionsMixin from './permissions'
 
 export default {
+  mixins: [PermissionsMixin],
   computed: {
     module() {
       return this.$route.meta.module.toLowerCase()

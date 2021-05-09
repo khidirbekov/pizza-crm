@@ -1,6 +1,8 @@
 import request from "@/utils/request";
+import PermissionsMixin from './permissions'
 
 export default {
+  mixins: [PermissionsMixin],
   computed: {
     module() {
       return this.$route.meta.module;
@@ -8,7 +10,7 @@ export default {
   },
   methods: {
     async create() {
-      const { data } = await request(`/api/${this.module.toLowerCase()}`, {
+      await request(`/api/${this.module.toLowerCase()}`, {
         method: "POST",
         data: { ...this.form },
       });
@@ -24,7 +26,7 @@ export default {
       this.$router.push({ name: `${this.module}.list` });
     },
     async edit() {
-      const { data } = await request(`/api/${this.module.toLowerCase()}/${this.id}`, {
+      await request(`/api/${this.module.toLowerCase()}/${this.id}`, {
         method: "PUT",
         data: { ...this.form },
       });

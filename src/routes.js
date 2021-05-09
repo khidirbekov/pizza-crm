@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import welcome from '@/modules/welcome/routes'
+import accessDenied from '@/modules/access-denied/routes'
 import cities from '@/modules/cities/routes'
 import orders from '@/modules/orders/routes'
 import pizzas from '@/modules/pizzas/routes'
@@ -27,6 +29,8 @@ const constantRouterMap = [
 
 const routes = [
   ...constantRouterMap,
+  ...welcome,
+  ...accessDenied,
   ...cities,
   ...orders,
   ...pizzas,

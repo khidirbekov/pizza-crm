@@ -10,6 +10,10 @@ export default [
       module: "Pizzas",
       action: 'list',
       title: "Пиццы",
+      roles: [
+        'ROLE_ADMIN',
+        'ROLE_MANAGER'
+      ]
     },
   },
   {
@@ -20,6 +24,10 @@ export default [
       module: "Pizzas",
       action: "edit",
       title: "Редактирование пиццы",
+      roles: [
+        'ROLE_ADMIN',
+        'ROLE_MANAGER'
+      ]
     },
   },
   {
@@ -30,6 +38,10 @@ export default [
       module: "Pizzas",
       action: "create",
       title: "Создание пиццы",
+      roles: [
+        'ROLE_ADMIN',
+        'ROLE_MANAGER'
+      ]
     },
   },
   {
@@ -40,6 +52,10 @@ export default [
       module: "Pizzas",
       action: "read",
       title: "Пицца",
+      roles: [
+        'ROLE_ADMIN',
+        'ROLE_MANAGER'
+      ]
     },
   },
 ];

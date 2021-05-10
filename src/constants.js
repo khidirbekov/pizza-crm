@@ -12,3 +12,9 @@ export const ROLES = [
     value: "ROLE_WAITER"
   }
 ] 
+
+export const PIZZA_STATUSES = {
+  created: 'Создан',
+  active: 'Принят',
+  completed: 'Завершен'
+}

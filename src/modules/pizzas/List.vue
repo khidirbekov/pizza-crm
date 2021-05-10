@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-action />
+    <header-action  />
     <vs-table  ref="tableContent" id="tableContent" striped>
       <template #thead>
         <vs-tr>

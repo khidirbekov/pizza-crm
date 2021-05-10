@@ -2,6 +2,17 @@
   <div>
     <header-action />
     <div>
+      Статус: {{ PIZZA_STATUSES[order.status] }}
+      <span>
+        <vs-button
+          v-if="order.isConfirm && order.status != 'completed'"
+          flat
+          success
+          @click="() => changeStatus(order)"
+        >
+          {{ changeStatusText(order) }}
+        </vs-button>
+      </span>
       <div>
         <p><i class="bx bxs-user"></i> {{ order.customer }}</p>
       </div>
@@ -11,7 +22,7 @@
       <div>
         <p>
           <i class="bx bx-calendar"></i>
-          {{ dayjs(order.dateCreate).format('HH:mm DD.MM.YYYY') }}
+          {{ dayjs(order.dateCreate).format("HH:mm DD.MM.YYYY") }}
         </p>
       </div>
       <div>
@@ -59,8 +70,9 @@
 
 <script>
 import HeaderAction from "@/components/HeaderAction";
-import request from '@/utils/request'
-import dayjs from 'dayjs'
+import request from "@/utils/request";
+import dayjs from "dayjs";
+import { PIZZA_STATUSES } from "@/constants";
 
 export default {
   components: {
@@ -77,20 +89,65 @@ export default {
       dayjs,
       order: null,
       baseURL: `${process.env.VUE_APP_TARGET}`,
-    }
+      PIZZA_STATUSES,
+    };
   },
   methods: {
     async fetchData(id) {
-      const { data } = await request.get(`/api/${this.module.toLowerCase()}/${id}`);
+      const { data } = await request.get(
+        `/api/${this.module.toLowerCase()}/${id}`
+      );
       this.order = {
         ...data,
       };
+    },
+    changeStatusText(order) {
+      if (order.status === "created") {
+        return "принять";
+      } else if (order.status === "active") {
+        return "завершить";
+      }
+      return;
+    },
+    async changeStatus(order) {
+      try {
+        let status;
+        if (order.status === "created") {
+          status = "active";
+        } else if (order.status === "active") {
+          status = "completed";
+        }
+        await request(`/api/orders/${order.id}/change_status`, {
+          method: "put",
+          data: {
+            status,
+          },
+        });
+        this.$vs.notification({
+          duration: 2000,
+          flat: true,
+          progress: "auto",
+          color: "success",
+          position: "top-right",
+          title: "Статус успешно изменен",
+        });
+        await this.fetchData(this.id);
+      } catch (e) {
+        this.$vs.notification({
+          duration: 2000,
+          flat: true,
+          progress: "auto",
+          color: "danger",
+          position: "top-right",
+          title: e.response?.data?.detail,
+        });
+      }
     },
   },
   async created() {
     this.id = this.$route.params.id;
     await this.fetchData(this.id);
-    this.isFetched = true
+    this.isFetched = true;
   },
 };
 </script>

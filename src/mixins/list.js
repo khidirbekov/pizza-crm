@@ -33,7 +33,7 @@ export default {
       const loading = this.$vs.loading({
         target: this.$refs.tableContent
       })
-      const { data } = await request.get(`/api/${this.module}?page=${page}`)
+      const { data } = await request.get(`/api/${this.module}?page=${page}&order[id]=desc`)
       loading.close()
       this.list = data.items
       this.countOfPages = data.countOfPages
